@@ -26,13 +26,11 @@ withdrawal_date=""
 # Function to calculate the next weekly date (macOS `date` syntax)
 get_next_week_date_mac() {
     local current_date="$1"
-    # Add 7 days to the current date
     date -j -v+7d -f "%Y-%m-%d" "$current_date" "+%Y-%m-%d"
 }
 
 # Function to process and write to CSV
 write_to_csv() {
-    # Add entry only if all required fields are set
     if [[ -n "$course_name" && -n "$start_date" && -n "$day_of_class" && -n "$start_time" && -n "$end_date" && -n "$end_time" && -n "$location" ]]; then
         # Construct description field
         description="Course Code: $course_code | Section: $section | Delivery: $delivery | Professor: $professor | Academic Penalty Withdrawal Date: $withdrawal_date"
